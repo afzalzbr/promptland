@@ -15,7 +15,6 @@ export const connectToDatabase = async () => {
       dbName: process.env.DATABASE_NAME,
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      useFindAndModify: false,
     });
 
     isConnected = db.connections[0].readyState;
