@@ -28,6 +28,20 @@ const MyProfile = () => {
 
   const handleDelete = async (post) => {
     console.log("delete");
+    const hasConfirmed = confirm("Are you sure you want to delete this post?");
+
+    if (hasConfirmed) {
+      try {
+        await fetch(`/api/prompt/${post?._id?.toString()}`, {
+          method: "DELETE",
+        });
+
+        const filteredPosts = posts.filter((p) => p._id !== post._id);
+        setPosts(filteredPosts);
+      } catch (error) {
+        console.log(error);
+      }
+    }
   };
 
   return (
@@ -36,7 +50,7 @@ const MyProfile = () => {
       desc="Welcome to your personalized profile page!"
       data={posts}
       handleEdit={(post) => handleEdit(post)}
-      handleDelete={handleDelete}
+      handleDelete={(post) => handleDelete(post)}
     />
   );
 };
