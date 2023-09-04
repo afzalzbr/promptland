@@ -20,19 +20,25 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
     }, 5000);
   };
 
+  const handleProfileClick = () => {
+    router.push(
+      `/profile/${post?.creator?._id}/?name=${post?.creator?.username}`
+    );
+  };
+
   return (
     <div className="prompt_card">
       <div className="flex justify-between items-state gap-5">
-        <div>
+        <div onClick={() => handleProfileClick()}>
           <Image
             src={post.creator.image}
             width={40}
             height={40}
             alt="profile picture"
-            className="rounded-full object-contain"
+            className="rounded-full object-contain cursor-pointer"
           />
 
-          <div className="flex flex-col">
+          <div className="flex flex-col cursor-pointer">
             <h3 className="font-satoshi font-semibold text-gray-900">
               {post.creator.username}
             </h3>

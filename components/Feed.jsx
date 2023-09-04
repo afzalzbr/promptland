@@ -40,7 +40,7 @@ const Feed = () => {
     return posts.filter(
       (prompt) =>
         regex.test(prompt?.tag) ||
-        regex.test(prompt?.username) ||
+        regex.test(prompt?.creator?.username) ||
         regex.test(prompt?.prompt)
     );
   };

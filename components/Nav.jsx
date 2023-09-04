@@ -79,7 +79,7 @@ const Nav = () => {
               alt="Profile"
               width={37}
               height={37}
-              className="rounded-full"
+              className="rounded-full cursor-pointer"
               onClick={() => setToggleDropdown((prevState) => !prevState)}
             />
             {toggleDropdown && (
